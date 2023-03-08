@@ -1,0 +1,1 @@
+"# EMedicine"  initgit add README.mdgit commit -m "first commit"git branch -M maingit remote add origin git@github.com:Aizaz-hash/EMedicine.gitgit push -u origin main
