@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using EMedicineBackend.Models;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 
 namespace EMedicineBackend.Controllers
@@ -24,7 +24,7 @@ namespace EMedicineBackend.Controllers
         {
             Response response = new Response();
             DataAccessLayer DAL = new DataAccessLayer();
-            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("EMedCS").ToString());
+            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("dbConnection").ToString());
             response = DAL.cartManagement(cart, connection);
             return response;
         }
@@ -35,7 +35,7 @@ namespace EMedicineBackend.Controllers
         {
             Response response = new Response();
             DataAccessLayer DAL = new DataAccessLayer();
-            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("EMedCS").ToString());
+            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("dbConnection").ToString());
             response = DAL.placeanOrder(users, connection);
             return response;
         }
@@ -47,7 +47,7 @@ namespace EMedicineBackend.Controllers
         {
             Response response = new Response();
             DataAccessLayer DAL = new DataAccessLayer();
-            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("EMedCS").ToString());
+            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("dbConnection").ToString());
             response = DAL.userOrderList(users, connection);
             return response;
         }

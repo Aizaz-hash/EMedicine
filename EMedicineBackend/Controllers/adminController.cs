@@ -1,8 +1,9 @@
 ﻿using EMedicineBackend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Data.SqlTypes;
+
 
 namespace EMedicineBackend.Controllers
 {
@@ -25,7 +26,7 @@ namespace EMedicineBackend.Controllers
         {
             Response response = new Response();
             DataAccessLayer DAL = new DataAccessLayer();
-            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("EMedCS").ToString());
+            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("dbConnection").ToString());
             response = DAL.addUpdateMedicine(medicines, connection);
             return response;
         }
@@ -37,7 +38,7 @@ namespace EMedicineBackend.Controllers
         {
             Response response = new Response();
             DataAccessLayer DAL = new DataAccessLayer();
-            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("EMedCS").ToString());
+            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("dbConnection").ToString());
             response = DAL.userList(connection);
             return response;
 

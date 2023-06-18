@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
  using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 //using Npgsql;
@@ -16,15 +16,6 @@ namespace EMedicineBackend.Controllers
     public class usersController : ControllerBase
     {
 
-        //private static NpgsqlConnection GetConnection()
-        //{
-        //    return NpgsqlConnection(@"server=localhost;Port = 5000  ; user Id = postgres;password=aizaz333@;Databse=Emedicine'");
-        //}
-
-        ////private static NpgsqlConnection NpgsqlConnection(string v)
-        ////{
-        ////    throw new NotImplementedException();
-        //}
 
         private readonly IConfiguration _configuration;
 
@@ -41,7 +32,7 @@ namespace EMedicineBackend.Controllers
         {
             Response response = new Response();
             DataAccessLayer DAL     = new DataAccessLayer();
-            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("EMedCS").ToString());
+            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("dbConnection").ToString());
             response = DAL.register(users , connection); 
             return response;
 
@@ -54,7 +45,7 @@ namespace EMedicineBackend.Controllers
         {
             Response response = new Response();
             DataAccessLayer DAL = new DataAccessLayer();
-            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("EMedCS").ToString());
+            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("dbConnection").ToString());
             response = DAL.login(users, connection);
             return response;
 
@@ -68,7 +59,7 @@ namespace EMedicineBackend.Controllers
         {
             Response response = new Response();
             DataAccessLayer DAL = new DataAccessLayer();
-            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("EMedCS").ToString());
+            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("dbConnection").ToString());
             response = DAL.viewUser(users, connection);
             return response;
 
@@ -82,7 +73,7 @@ namespace EMedicineBackend.Controllers
         {
             Response response = new Response();
             DataAccessLayer DAL = new DataAccessLayer();
-            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("EMedCS").ToString());
+            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("dbConnection").ToString());
             response = DAL.updateProfile(users, connection);
             return response;
 
